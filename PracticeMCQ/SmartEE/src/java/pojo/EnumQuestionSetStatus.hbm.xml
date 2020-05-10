@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:55:20 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojo.EnumQuestionSetStatus" table="enum_question_set_status" catalog="practicemcqdb">
+        <id name="idqestionsetstatus" type="java.lang.Integer">
+            <column name="idqestionsetstatus" />
+            <generator class="identity" />
+        </id>
+        <property name="status" type="string">
+            <column name="status" length="100" />
+        </property>
+        <set name="questionSets" table="question_set" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idqestionsetstatus" not-null="true" />
+            </key>
+            <one-to-many class="pojo.QuestionSet" />
+        </set>
+    </class>
+</hibernate-mapping>

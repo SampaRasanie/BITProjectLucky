@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="practicemcqdb"/>
+  <table-filter match-name="question_set"/>
+  <table-filter match-name="enum_question_status"/>
+  <table-filter match-name="question"/>
+  <table-filter match-name="answerdescription"/>
+  <table-filter match-name="user"/>
+  <table-filter match-name="enum_account_status"/>
+  <table-filter match-name="practice_question"/>
+  <table-filter match-name="answers_history"/>
+  <table-filter match-name="enum_question_set_status"/>
+  <table-filter match-name="account"/>
+  <table-filter match-name="enum_user_type"/>
+  <table-filter match-name="enum_user_status"/>
+  <table-filter match-name="practice_question_set"/>
+  <table-filter match-name="answers"/>
+  <table-filter match-name="enum_security_questions"/>
+  <table-filter match-name="enum_sections"/>
+  <table-filter match-name="enum_subject"/>
+</hibernate-reverse-engineering>

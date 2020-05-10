@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:55:20 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojo.User" table="user" catalog="practicemcqdb">
+        <id name="iduser" type="java.lang.Integer">
+            <column name="iduser" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="enumUserType" class="pojo.EnumUserType" fetch="select">
+            <column name="idusertype" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enumSecurityQuestions" class="pojo.EnumSecurityQuestions" fetch="select">
+            <column name="idsecquestion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="account" class="pojo.Account" fetch="select">
+            <column name="idaccount" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enumUserStatus" class="pojo.EnumUserStatus" fetch="select">
+            <column name="status" not-null="true" />
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="username" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" />
+        </property>
+        <property name="firstname" type="string">
+            <column name="firstname" length="45" />
+        </property>
+        <property name="lastname" type="string">
+            <column name="lastname" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <property name="secquestionaswer" type="string">
+            <column name="secquestionaswer" length="100" />
+        </property>
+        <set name="answersHistories" table="answers_history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_iduser" not-null="true" />
+            </key>
+            <one-to-many class="pojo.AnswersHistory" />
+        </set>
+        <set name="questionSets" table="question_set" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="author" not-null="true" />
+            </key>
+            <one-to-many class="pojo.QuestionSet" />
+        </set>
+        <set name="practiceQuestionSets" table="practice_question_set" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="USER_iduser" not-null="true" />
+            </key>
+            <one-to-many class="pojo.PracticeQuestionSet" />
+        </set>
+    </class>
+</hibernate-mapping>

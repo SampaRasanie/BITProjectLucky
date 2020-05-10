@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:55:20 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojo.Answerdescription" table="answerdescription" catalog="practicemcqdb">
+        <id name="idanswerdescription" type="int">
+            <column name="idanswerdescription" />
+            <generator class="assigned" />
+        </id>
+        <property name="ansdtext" type="string">
+            <column name="ansdtext" />
+        </property>
+        <property name="ansdstatus" type="string">
+            <column name="ansdstatus" />
+        </property>
+        <property name="idanswer" type="java.lang.Integer">
+            <column name="idanswer" />
+        </property>
+    </class>
+</hibernate-mapping>

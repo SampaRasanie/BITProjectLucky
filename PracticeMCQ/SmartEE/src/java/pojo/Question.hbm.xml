@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:55:20 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojo.Question" table="question" catalog="practicemcqdb">
+        <id name="idquestion" type="java.lang.Integer">
+            <column name="idquestion" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="enumQuestionStatus" class="pojo.EnumQuestionStatus" fetch="select">
+            <column name="status" not-null="true" />
+        </many-to-one>
+        <many-to-one name="questionSet" class="pojo.QuestionSet" fetch="select">
+            <column name="idquestionset" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enumSections" class="pojo.EnumSections" fetch="select">
+            <column name="idenumsections" not-null="true" />
+        </many-to-one>
+        <property name="questiontext" type="string">
+            <column name="questiontext" />
+        </property>
+        <property name="imgpath" type="string">
+            <column name="imgpath" length="256" />
+        </property>
+        <set name="answerses" table="answers" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="QUESTION_idquestion" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Answers" />
+        </set>
+    </class>
+</hibernate-mapping>

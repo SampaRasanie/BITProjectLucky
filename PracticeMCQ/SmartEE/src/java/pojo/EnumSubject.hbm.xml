@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:55:20 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojo.EnumSubject" table="enum_subject" catalog="practicemcqdb">
+        <id name="idenumsubject" type="java.lang.Integer">
+            <column name="idenumsubject" />
+            <generator class="identity" />
+        </id>
+        <property name="subject" type="string">
+            <column name="subject" length="45" />
+        </property>
+        <set name="questionSets" table="question_set" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="enum_subject_idenumsubject" not-null="true" />
+            </key>
+            <one-to-many class="pojo.QuestionSet" />
+        </set>
+        <set name="enumSectionses" table="enum_sections" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idenumsubject" not-null="true" />
+            </key>
+            <one-to-many class="pojo.EnumSections" />
+        </set>
+    </class>
+</hibernate-mapping>

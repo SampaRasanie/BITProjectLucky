@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:55:20 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojo.PracticeQuestionSet" table="practice_question_set" catalog="practicemcqdb">
+        <id name="idpracticeQuestionHistory" type="java.lang.Integer">
+            <column name="idpractice_question_history" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="questionSet" class="pojo.QuestionSet" fetch="select">
+            <column name="question_set_idquestionset" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="pojo.User" fetch="select">
+            <column name="USER_iduser" not-null="true" />
+        </many-to-one>
+        <property name="score" type="java.lang.Integer">
+            <column name="Score" />
+        </property>
+        <property name="insertTs" type="timestamp">
+            <column name="insert_ts" length="19" />
+        </property>
+        <set name="practiceQuestions" table="practice_question" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="practice_question_set_idpractice_question_history" not-null="true" />
+            </key>
+            <one-to-many class="pojo.PracticeQuestion" />
+        </set>
+    </class>
+</hibernate-mapping>

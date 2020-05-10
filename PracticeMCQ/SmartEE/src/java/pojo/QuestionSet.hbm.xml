@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:55:20 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojo.QuestionSet" table="question_set" catalog="practicemcqdb">
+        <id name="idquestionset" type="java.lang.Integer">
+            <column name="idquestionset" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="enumQuestionSetStatus" class="pojo.EnumQuestionSetStatus" fetch="select">
+            <column name="idqestionsetstatus" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="pojo.User" fetch="select">
+            <column name="author" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enumSubject" class="pojo.EnumSubject" fetch="select">
+            <column name="enum_subject_idenumsubject" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="245" />
+        </property>
+        <property name="initiateddate" type="timestamp">
+            <column name="initiateddate" length="19" />
+        </property>
+        <set name="practiceQuestionSets" table="practice_question_set" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="question_set_idquestionset" not-null="true" />
+            </key>
+            <one-to-many class="pojo.PracticeQuestionSet" />
+        </set>
+        <set name="questions" table="question" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idquestionset" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Question" />
+        </set>
+    </class>
+</hibernate-mapping>

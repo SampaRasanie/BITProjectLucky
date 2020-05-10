@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:55:20 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojo.EnumSecurityQuestions" table="enum_security_questions" catalog="practicemcqdb">
+        <id name="idsecquestion" type="java.lang.Integer">
+            <column name="idsecquestion" />
+            <generator class="identity" />
+        </id>
+        <property name="question" type="string">
+            <column name="question" length="245" not-null="true" />
+        </property>
+        <property name="isactive" type="java.lang.Integer">
+            <column name="isactive" />
+        </property>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idsecquestion" not-null="true" />
+            </key>
+            <one-to-many class="pojo.User" />
+        </set>
+    </class>
+</hibernate-mapping>
